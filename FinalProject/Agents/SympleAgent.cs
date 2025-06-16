@@ -2,13 +2,13 @@ using FinalProject.Abstract;
 
 namespace FinalProject.IranienAgent;
 
-public class AgentIranien : AbsAgentIran
+public class SympleAgent : Agent
 {
-    public AgentIranien(string nameAgent, string rank) : base(nameAgent, rank)
+    public SympleAgent(string nameAgent, string rank) : base(nameAgent, rank)
     {
     }
 
-    public override bool Maching(string typeSensoris)
+    public override bool Matching(string typeSensoris)
     {
         return true;
     }
