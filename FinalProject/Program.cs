@@ -1,9 +1,14 @@
-﻿namespace FinalProject;
+﻿using FinalProject.Abstract;
+using FinalProject.GameManager;
+using FinalProject.IranienAgent;
+
+namespace FinalProject;
 
 class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Hello, World!");
+        Agent tst1 = new FootSoldier("ani");
+        TheGame.Start();
     }
 }
