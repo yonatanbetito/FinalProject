@@ -7,9 +7,9 @@ namespace FinalProject.IranienAgent;
 
 public class FootSoldier : Agent
 {
-    public FootSoldier(string nameAgent) : base(nameAgent,Enums.AgentRank.FootSoldier)
+    public FootSoldier() : base(Enums.AgentRank.FootSoldier)
     {
-        WeakSensors = new Enums.SensorType[] { Enums.SensorType.Audio, Enums.SensorType.Audio };
+        WeakSensors = new Enums.SensorType[] { Enums.SensorType.Audio, Enums.SensorType.Thermal };
         
     }
     

@@ -6,14 +6,12 @@ namespace FinalProject.Abstract;
 
 public abstract class Agent
 {
-    protected string NameAgent { get; private set; }
     protected Enums.AgentRank Rank { get; private set; }
     protected internal List<Sensors> AttachSensors { get; set; }
     protected internal Enums.SensorType[] WeakSensors;
     
-    public Agent(string nameAgent, Enums.AgentRank rank)
+    public Agent( Enums.AgentRank rank)
     {
-        NameAgent = nameAgent;
         Rank = rank;
         AttachSensors = new List<Sensors>();
         WeakSensors = new Enums.SensorType[NumOfSlots()];
@@ -35,8 +33,6 @@ public abstract class Agent
             return false;
         
         Sensors sensor = Sensors.CreateByName(typeSensor);
-        if (sensor == null)
-            return false;
 
         AttachSensors.Add(sensor);
         return true; 
@@ -49,6 +45,10 @@ public abstract class Agent
             if (WeakSensors.Contains(sensor.TypeOfSensor) && !sensor.IsActive)
             {
                 sensor.IsActive = true;
+                if (sensor.TypeOfSensor == Enums.SensorType.Pulse && sensor is PulseSensor pulseSensor)
+                {
+                    pulseSensor.BreaksCount++;
+                }
             }
         }
     }

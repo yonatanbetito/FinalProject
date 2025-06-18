@@ -8,7 +8,8 @@ class Program
 {
     static void Main(string[] args)
     {
-        Agent tst1 = new FootSoldier("ani");
-        TheGame.Start();
+        FootSoldier agent = new FootSoldier();
+        Agent tst1 = new FootSoldier();
+        TheGame.Start(agent);
     }
 }
