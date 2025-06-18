@@ -7,17 +7,17 @@ public class Enums
         Audio,
         Thermal,
         Pulse,
-        Motion,
+        /*Motion,
         Magnetic,
         Signal,
-        Light
+        Light*/
     }
 
     public enum AgentRank
     {
         FootSoldier,
         SquadLeader,
-        SeniorCommander,
-        OrganizationLeader
+        /*SeniorCommander,
+        OrganizationLeader*/
     }
 }

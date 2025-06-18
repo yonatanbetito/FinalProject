@@ -1,3 +1,4 @@
+using FinalProject.Abstract;
 using FinalProject.Enum;
 using FinalProject.Interface;
 
@@ -8,4 +9,6 @@ public class AudioSensor : Sensors
     public AudioSensor(Enums.SensorType nameSensor) : base(nameSensor)
     {
     }
+    
+    
 }
