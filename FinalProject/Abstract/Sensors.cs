@@ -17,7 +17,9 @@ public abstract class Sensors
         NumberOfActivetion = 0;
         IsActive = false;
     }
-
+    
+    public abstract void Activate(Agent nameAgent);
+    
     public static Sensors CreateByName(string SensorType)
     {
         switch (SensorType.ToLower())
@@ -26,12 +28,13 @@ public abstract class Sensors
                 return new AudioSensor(Enums.SensorType.Audio);
             case "thermal":
                 return new ThermalSensor(Enums.SensorType.Thermal);
+            case "pulse":
+                return new PulseSensor(Enums.SensorType.Pulse,0);
 
             default:
                 return null;
         }
     }
+    
 
-/*public abstract string numberActivation();
-*/
 }

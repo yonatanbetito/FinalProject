@@ -9,6 +9,10 @@ public class AudioSensor : Sensors
     public AudioSensor(Enums.SensorType nameSensor) : base(nameSensor)
     {
     }
-    
+
+
+    public override void Activate(Agent agent)
+    {
+    }
     
 }

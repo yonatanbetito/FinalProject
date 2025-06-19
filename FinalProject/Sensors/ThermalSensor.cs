@@ -9,7 +9,7 @@ public class ThermalSensor : Sensors
 {
         public ThermalSensor(Enums.SensorType type) : base(type) { }
         
-        public static void Activate(Agent nameAgent)
+        public override void Activate(Agent nameAgent)
         {
             if (!nameAgent.WeakSensors.Any())
                 Console.WriteLine("Weak not fund");
