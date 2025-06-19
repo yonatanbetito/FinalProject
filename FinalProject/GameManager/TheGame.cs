@@ -12,7 +12,8 @@ internal class TheGame
     private string typeSensor;
 
     public static void Start(Agent agent)
-    {    Console.WriteLine("Welcome to the Agent Sensor Investigation Game");
+    {
+        Console.WriteLine("Welcome to the Agent Sensor Investigation Game");
 
         int weakness = agent.WeakSensors.Length;
 
@@ -55,5 +56,4 @@ internal class TheGame
         }
 
         Console.WriteLine("agent exposed");
-    }
-    }
+    }}
