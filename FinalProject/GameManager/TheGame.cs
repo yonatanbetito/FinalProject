@@ -19,31 +19,41 @@ internal class TheGame
 
         while (OperationCounter < weakness)
         {
-            Console.WriteLine("Eenter a type of sensor");
+            Console.WriteLine("Enter a type of sensor");
             string typeSensor = Console.ReadLine().ToLower();
-            if (agent.Matching(typeSensor))
+
+            bool matched = agent.Matching(typeSensor);
+
+            if (matched)
             {
                 agent.Activate();
                 OperationCounter++;
                 Console.WriteLine($"sensors {typeSensor} attached {OperationCounter}/{weakness}");
-                switch (typeSensor.ToLower())
-                {
-                    case "thermal":
-                        ThermalSensor.Activate(agent);
-                        break;
-                    case "pulse":
-                        PulseSensor.RemoveBrokenPulseSensor(agent);
-                        break;
-                    default:
-                        break;
-                }
             }
             else
             {
+                if (typeSensor == "pulse")
+                {
+                    foreach (var sensor in agent.AttachSensors.ToList())
+                    {
+                        if (sensor.TypeOfSensor.ToString().ToLower() == "pulse" &&
+                            sensor is PulseSensor pulseSensor)
+                        {
+                            pulseSensor.BreaksCount++;
+
+                            if (pulseSensor.isBreaks())
+                            {
+                                agent.AttachSensors.Remove(pulseSensor);
+                                OperationCounter--;
+                                Console.WriteLine("PulseSensor broke and was removed.");
+                            }
+                        }
+                    }
+                }
+
                 Console.WriteLine("sensor not Matching/Added");
             }
         }
 
         Console.WriteLine("agent exposed");
-    }
-}
+    }}

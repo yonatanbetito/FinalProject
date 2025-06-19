@@ -9,8 +9,8 @@ public abstract class Agent
     protected Enums.AgentRank Rank { get; private set; }
     protected internal List<Sensors> AttachSensors { get; set; }
     protected internal Enums.SensorType[] WeakSensors;
-    
-    public Agent( Enums.AgentRank rank)
+
+    public Agent(Enums.AgentRank rank)
     {
         Rank = rank;
         AttachSensors = new List<Sensors>();
@@ -23,33 +23,33 @@ public abstract class Agent
     {
         if (!System.Enum.TryParse<Enums.SensorType>(typeSensor, true, out var type))
             return false;
-        
+
         int allowedCount = WeakSensors.Count(w => w == type);
         if (allowedCount == 0)
             return false;
-        
+
         int alreadyAttached = AttachSensors.Count(s => s.TypeOfSensor == type);
         if (alreadyAttached >= allowedCount)
             return false;
-        
+
         Sensors sensor = Sensors.CreateByName(typeSensor);
 
         AttachSensors.Add(sensor);
-        return true; 
+        return true;
     }
 
     public virtual void Activate()
     {
-        foreach (var sensor in AttachSensors)
+        foreach (var sensor in AttachSensors.ToList())
         {
-            if (WeakSensors.Contains(sensor.TypeOfSensor) && !sensor.IsActive)
+            if (sensor == null)
             {
-                sensor.IsActive = true;
-                if (sensor.TypeOfSensor == Enums.SensorType.Pulse && sensor is PulseSensor pulseSensor)
-                {
-                    pulseSensor.BreaksCount++;
-                }
+                Console.WriteLine("Found null sensor in AttachSensors!");
+                continue;
             }
+
+            sensor.Activate(this);
         }
     }
 }
+

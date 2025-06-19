@@ -1,4 +1,5 @@
 ﻿using FinalProject.Abstract;
+using FinalProject.Enum;
 using FinalProject.GameManager;
 using FinalProject.IranienAgent;
 
@@ -9,7 +10,7 @@ class Program
     static void Main(string[] args)
     {
         FootSoldier agent = new FootSoldier();
-        Agent tst1 = new FootSoldier();
-        TheGame.Start(agent);
+        SquadLeader agent2 = new SquadLeader();
+        TheGame.Start(agent2);
     }
 }

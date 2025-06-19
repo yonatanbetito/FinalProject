@@ -13,16 +13,21 @@ public class PulseSensor : Sensors
     }
     
 
-    public static void RemoveBrokenPulseSensor(Agent agent)
+    public override void Activate(Agent agent)
     {
-        foreach (Sensors sensor in agent.AttachSensors.ToList())
+        BreaksCount++;
+        if (isBreaks())
         {
-            if (sensor.TypeOfSensor.ToString().ToLower() == "pulse" &&
-                ((PulseSensor)sensor).isBreaks())
-            {
-                agent.AttachSensors.Remove(sensor);
-                break;
-            }
+            Console.WriteLine("PulseSensor has broken after 3 activations.");
+            RemoveBrokenSensor(agent);
+        }
+        
+    }
+    public void RemoveBrokenSensor(Agent agent)
+    {
+        if (agent.AttachSensors.Contains(this))
+        {
+            agent.AttachSensors.Remove(this);
         }
     }
     
@@ -30,6 +35,4 @@ public class PulseSensor : Sensors
     {
         return BreaksCount>=3;
     }
-
-
 }

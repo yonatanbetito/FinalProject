@@ -9,7 +9,7 @@ public class FootSoldier : Agent
 {
     public FootSoldier() : base(Enums.AgentRank.FootSoldier)
     {
-        WeakSensors = new Enums.SensorType[] { Enums.SensorType.Audio, Enums.SensorType.Thermal };
+        WeakSensors = new Enums.SensorType[] { Enums.SensorType.Audio, Enums.SensorType.Pulse };
         
     }
     
